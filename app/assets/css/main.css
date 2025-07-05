@@ -1,15 +1,2 @@
-@import "https://cdn.jsdelivr.net/npm/@vue-flow/core@1.45.0/dist/style.css";
-@import "https://cdn.jsdelivr.net/npm/@vue-flow/core@1.45.0/dist/theme-default.css";
-@import "https://cdn.jsdelivr.net/npm/@vue-flow/controls@latest/dist/style.css";
-@import "https://cdn.jsdelivr.net/npm/@vue-flow/minimap@latest/dist/style.css";
-@import "https://cdn.jsdelivr.net/npm/@vue-flow/node-resizer@latest/dist/style.css";
 @import "tailwindcss";
 @import "@nuxt/ui-pro";
-
-:root {
-  --ui-primary: black;
-}
-
-.dark {
-  --ui-primary: white;
-}

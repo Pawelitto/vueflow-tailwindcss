@@ -14,136 +14,82 @@ const showControls: Ref<boolean> = ref(false)
 
 const nodes = ref<Node[]>([
   {
-    id: "b1b96559b3144eae",
+    id: "start",
     type: "indicator",
     position: { x: 0, y: 0 },
     data: {}
   },
-  // Response #1 z Text i Delay
   {
-    id: "7055fd5dafbd4dc1",
+    id: "response-1",
     type: "response",
-    position: { x: 500, y: 0 },
-    data: { label: "Response #1" }
-  },
-  {
-    id: "a8a77b45a3eb49e6",
-    type: "Text",
-    position: { x: 20, y: 50 },
-    parentNode: "7055fd5dafbd4dc1",
+    position: { x: 500, y: 50 },
     data: {
-      message: "Witamy w naszej pizzeri"
+      label: "W czym mogę pomóc?",
+      buttons: [
+        { id: "btn-a", type: "postback", order: 1, title: "Zamówienie" },
+        { id: "btn-b", type: "postback", order: 2, title: "Reklamacja" },
+        { id: "btn-c", type: "postback", order: 3, title: "Kontakt z obsługą" }
+      ]
     }
   },
   {
-    id: "fc01a0a044224237",
-    type: "Delay",
-    position: { x: 20, y: 120 },
-    parentNode: "7055fd5dafbd4dc1",
-    data: {
-      delayTime: 3,
-      isShowTyping: true
-    }
-  },
-
-  // Response #2 z postbackami
-  {
-    id: "017891c8a1b347bc",
+    id: "response-2a",
     type: "response",
-    position: { x: 1020, y: 0 },
-    data: { label: "Response #2" }
-  },
-  {
-    id: "a9eb1322323d412b",
-    type: "postback",
-    position: { x: 20, y: 50 },
-    parentNode: "017891c8a1b347bc",
-    data: { title: "Godziny otwarcia" }
-  },
-  {
-    id: "37166511083943ae",
-    type: "postback",
-    position: { x: 20, y: 100 },
-    parentNode: "017891c8a1b347bc",
-    data: { title: "Menu" }
-  },
-  {
-    id: "740a73d8c50a4913",
-    type: "postback",
-    position: { x: 20, y: 150 },
-    parentNode: "017891c8a1b347bc",
-    data: { title: "Jak dojechać" }
-  },
-
-  // Response #3 z kolejnym tekstem i buttonem
-  {
-    id: "abc123response",
-    type: "response",
-    position: { x: 500, y: 400 },
-    data: { label: "Response #3" }
-  },
-  {
-    id: "0424bdad18694dec",
-    type: "Text",
-    position: { x: 20, y: 50 },
-    parentNode: "abc123response",
+    position: { x: 1050, y: 100 },
     data: {
-      message: "Dzisiaj taka promka 3 + 1"
+      label: "Świetnie! Przejdź do formularza zamówienia."
     }
   },
   {
-    id: "49c360c9ff45479c",
-    type: "button",
-    position: { x: 20, y: 120 },
-    parentNode: "abc123response",
+    id: "response-2b",
+    type: "response",
+    position: { x: 1050, y: 400 },
     data: {
-      title: "Button #1"
+      label: "Opisz swój problem z zamówieniem."
     }
   },
-
-  // Response #4 z obrazkiem
   {
-    id: "response4img",
+    id: "response-2c",
     type: "response",
-    position: { x: 1020, y: 400 },
-    data: { label: "Response #4" }
-  },
-  {
-    id: "2776d907dda84c34",
-    type: "Image",
-    position: { x: 20, y: 50 },
-    parentNode: "response4img",
+    position: { x: 1050, y: 700 },
     data: {
-      url: "6ffc9b98-5974-4d8d-9dd6-e356429a98c4/b84fc97c606c4dae.png",
-      view_url: "reactflow.png"
+      label: "Połączę Cię z konsultantem."
     }
   }
 ])
 
 const edges = ref<Edge[]>([
   {
-    id: "b1b96559b3144eae->7055fd5dafbd4dc1",
-    type: "button",
-    source: "b1b96559b3144eae",
-    target: "7055fd5dafbd4dc1"
+    id: "edge-1",
+    source: "start",
+    sourceHandle: "indicator-001",
+    target: "response-1",
+    targetHandle: "tg-response-1",
+    zIndex: 1001
   },
   {
-    id: "7055fd5dafbd4dc1->017891c8a1b347bc",
-    type: "button",
-    source: "7055fd5dafbd4dc1",
-    target: "017891c8a1b347bc"
+    id: "edge-2a",
+    source: "response-1",
+    sourceHandle: "btn-btn-a", // ← powiązane z "Zamówienie"
+    target: "response-2a",
+    targetHandle: "tg-response-2a",
+    zIndex: 1001
   },
   {
-    id: "017891c8a1b347bc->abc123response",
-    type: "button",
-    source: "017891c8a1b347bc",
-    target: "abc123response"
+    id: "edge-2b",
+    source: "response-1",
+    sourceHandle: "btn-btn-b", // ← powiązane z "Reklamacja"
+    target: "response-2b",
+    targetHandle: "tg-response-2b",
+    zIndex: 1001
   },
   {
-    id: "abc123response->response4img",
-    type: "button",
-    source: "abc123response",
-    target: "response4img"
+    id: "edge-2c",
+    source: "response-1",
+    sourceHandle: "btn-btn-c", // ← powiązane z "Kontakt z obsługą"
+    target: "response-2c",
+    targetHandle: "tg-response-2c",
+    zIndex: 1001
   }
 ])
 
@@ -156,13 +102,13 @@ onInit(() => {
   <div class="w-[100vw] h-[100vh]">
     <ClientOnly>
       <VueFlow
-        :nodes="nodes"
-        :edges="edges"
+        v-model:nodes="nodes"
+        v-model:edges="edges"
         :min-zoom="0.5"
         :max-zoom="1"
         :class="{ dark }"
         fit-view-on-init
-        delete-key-code="false"
+        delete-key-code="true"
       >
         <MiniMap />
 

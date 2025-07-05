@@ -4,11 +4,12 @@ export default defineAppConfig({
       dynamic: true,
     },
     colors: {
-      primary: "black",
+      primary: "indigo",
       neutral: "neutral",
       tertiary: "fuchsia",
       fortinary: "teal",
     },
+    gray: "zinc",
     tooltip: {
       default: {
         openDelay: 500,
@@ -23,4 +24,4 @@ export default defineAppConfig({
       },
     },
   },
-})
+});

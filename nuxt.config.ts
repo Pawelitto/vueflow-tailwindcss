@@ -7,6 +7,10 @@ export default defineNuxtConfig({
   },
   modules: ["@nuxt/ui-pro"],
   css: ["~/assets/css/main.css"],
+  colorMode: {
+    preference: "dark",
+    fallback: "dark",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
@@ -21,6 +25,32 @@ export default defineNuxtConfig({
         "warning",
         "error",
         "fortinary",
+      ],
+    },
+  },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/@vue-flow/core@1.45.0/dist/style.css",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/@vue-flow/core@1.45.0/dist/theme-default.css",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/@vue-flow/controls@latest/dist/style.css",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/@vue-flow/minimap@latest/dist/style.css",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/@vue-flow/node-resizer@latest/dist/style.css",
+        },
       ],
     },
   },

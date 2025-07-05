@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { useVueFlow, Handle, Position } from "@vue-flow/core";
+import { useVueFlow, Handle, Position } from "@vue-flow/core"
 
 // const { fitView } = useVueFlow();
 
 const props = defineProps({
   id: {
     type: String,
-    required: true,
+    required: true
   },
   data: {
     type: Object,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
 // const isActive: ComputedRef<boolean> = computed(() => {
 //   return flowStore.activeResponseId === props.id;
@@ -28,12 +28,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <Handle type="source" :position="Position.Right" />
+  <Handle id="indicator-001" type="source" :position="Position.Right" />
   <UCard
     :ui="{
       base: 'w-[360px] font-light transition-all',
       rounded: 'rounded-2xl',
-      ring: 'dark:ring-primary-500',
+      ring: 'dark:ring-primary-500'
       // ring: isActive ? 'dark:ring-primary-500' : 'hover:dark:ring-primary-500',
     }"
   >
